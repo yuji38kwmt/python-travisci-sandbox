@@ -1,0 +1,18 @@
+
+jobs:
+  include:
+    - os: linux
+      dist: focal
+      python: 3.11
+      script:
+        - python raise_per
+    - os: windows
+      python: 3.11
+      language: shell  # 'language: python' is an error on Travis CI Windows
+      install:
+        - choco install python --version 3.11
+      env: PATH=/c/Python311:/c/Python311/Scripts:$PATH
+
+script:
+  - python raise_permission_error.py
+
